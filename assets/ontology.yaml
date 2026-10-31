@@ -1,0 +1,219 @@
+# Role ontology (05.2 §2). Synonyms are FOLDED (no diacritics, lowercase). Hints, not a closed list:
+# the BSM may add custom:<name> roles. pack_entities lists the roles each logical table kind may carry.
+roles:
+  # ---- commerce
+  order_id:        {dtype: id,       syn: [ma hd, so hd, don so, hoa don so, hd so, ma don, so don, ma don hang, so hoa don, ma hoa don, hoa don, order id, invoice, so ct, so chung tu, ma giao dich, ma phieu ban, ma bill, bill, so bill, don hang, order no, order number, order code, order, invoice no, receipt no, bill no, transaction id]}
+  order_date:      {dtype: date,     syn: [ngay, ngay ban, ngay hd, ngay lap, ngay dat, ngay giao dich, ngay mua, ngay ban hang, ngay hoa don, thoi gian, order date, date, created at, ngay tao, created, sale date, transaction date, ngay chung tu]}
+  order_datetime:  {dtype: datetime, syn: [thoi diem, gio ban, thoi gian ban, thoi gian tao, thoi gian lap, ngay gio tao, created at, timestamp, ngay gio, thoi gian giao dich, datetime, order time, order datetime, sold at, gio tao don, gio tao, gio dat don, gio lap don, thoi diem tao don]}
+  order_time:      {dtype: string,   syn: [gio, gio ban, gio vao, time]}
+  product_id:      {dtype: id,       syn: [ma sp, ma san pham, ma hang, ma hang hoa, ma vt, ma vat tu, ma mon, sku, ma thuoc, product id, item id, ma mat hang, ma, code, product code, item code, sku code, ma so, id]}
+  product_name:    {dtype: string,   syn: [ten sp, ten san pham, ten hang, ten hang hoa, ten mon, mon, mat hang, san pham, ten thuoc, thuoc, ten vt, vat tu, item, product, ten mat hang, hang hoa, ten do uong, do uong, name, ten, product name, item name, description, ten goi, "@hàng"]}
+  category:        {dtype: string,   syn: [nhom, nhom hang, danh muc, loai, loai hang, phan loai, category, nganh hang, nhom san pham, loai san pham, nhom thuoc, loai mon, product category, group, type, nhom mon]}
+  variant:         {dtype: string,   syn: [size, kich co, topping, mau, quy cach, bien the, mau sac, so size, so / size, size so]}
+  quantity:        {dtype: number,   syn: [sl, so luong, qty, so ly, so phan, sl ban, so luong ban, quantity, so cai, quantity sold, qty sold, count, so luong mua]}
+  unit:            {dtype: string,   syn: [dvt, don vi, don vi tinh, unit]}
+  unit_price:      {dtype: number,   syn: [don gia, gia ban, gia, price, gia le, don gia ban, gia ban le, unit price, sale price, selling price, price each]}
+  list_price:      {dtype: number,   syn: [gia niem yet, gia ban le, gia ban, gia le, don gia, gia, price, list price, sale price, selling price, retail price]}
+  cost_price:      {dtype: number,   syn: [gia von, gia nhap, gia mua, cost, cost price, don gia nhap, unit cost, purchase price, import price]}
+  line_gross_amount: {dtype: number, syn: [thanh tien truoc ck, tien hang, gross, tong tien hang, thanh tien goc, tien truoc giam, tien hang truoc giam, thanh tien truoc giam]}
+  line_discount_amount: {dtype: number, syn: [ck, chiet khau, giam gia, discount, tien giam, tien ck, giam, discount amount]}
+  line_discount_pct: {dtype: percent, syn: [ck %, ty le ck, discount %, phan tram ck, ck phan tram, giam gia phan tram]}
+  line_net_amount: {dtype: number,   syn: [thanh tien, thanh tien sau ck, tong tien dong, amount, line total, so tien, thanh toan dong, tien, subtotal, net amount, total price, amount paid, doanh thu dong]}
+  line_status:     {dtype: string,   syn: [trang thai dong, tra hang, doi tra, tinh trang dong]}
+  returned_qty:    {dtype: number,   syn: [sl tra, so luong tra, tra lai, sl doi tra]}
+  returned_flag:   {dtype: bool,     syn: [bi tra, da tra hang, tra hang, is returned, returned]}
+  order_status:    {dtype: string,   syn: [trang thai, tinh trang, status, trang thai don, tinh trang don, order status, state]}
+  voucher_amount:  {dtype: number,   syn: [voucher, ma giam gia, khuyen mai don, giam gia don, coupon, km don, tien voucher, giam gia hoa don, voucher amount, coupon amount, promo]}
+  shipping_fee:    {dtype: number,   syn: [phi ship, phi giao hang, van chuyen, shipping, phi van chuyen, tien ship, delivery fee, ship fee]}
+  vat_amount:      {dtype: number,   syn: [vat, thue, thue gtgt, tien thue, tien vat, tax, vat amount, tax amount]}
+  order_total:     {dtype: number,   syn: [tong tien, tong cong, thanh toan, khach tra, total, tong thanh toan, tong hoa don, tong don, grand total, order total, total amount]}
+  paid_amount:     {dtype: number,   syn: [da tra, da thanh toan, tien khach dua, paid, khach da tra, so tien da tra, paid amount, amount paid]}
+  debt_amount:     {dtype: number,   syn: [con no, "no", ghi no, cong no, chua thanh toan, con lai, so no, debt, balance due, outstanding]}
+  channel:         {dtype: string,   syn: [kenh, kenh ban, nguon, hinh thuc ban, nguon don, channel, kenh ban hang, sales channel, source]}
+  payment_method:  {dtype: string,   syn: [hinh thuc thanh toan, thanh toan bang, pttt, payment, phuong thuc thanh toan, httt, payment method, pay method, payment type, phuong thuc tt, hinh thuc tt, pt tt, pt thanh toan]}
+  customer_id:     {dtype: id,       syn: [ma kh, ma khach, ma khach hang, customer id, ma thanh vien, customer code, customer, client id, member id, ma kh hang]}
+  customer_name:   {dtype: string,   syn: [ten kh, khach hang, ten khach, ten goi, ten khach hang, customer, khach, nguoi mua, full name, customer name, client, client name, ho ten, ten, name, buyer]}
+  customer_type:   {dtype: string,   syn: [loai kh, nhom kh, loai khach, khach si le, hang thanh vien, nhom khach hang, nhom khach, kieu khach, phan loai khach, doi tuong khach]}
+  phone:           {dtype: string,   syn: [sdt, so dien thoai, dien thoai, phone]}
+  branch_id:       {dtype: id,       syn: [ma cn, chi nhanh, cua hang, co so, branch, ma cua hang, diem ban, branch id, store, store id, shop]}
+  branch_name:     {dtype: string,   syn: [ten chi nhanh, chi nhanh, ten cua hang, co so, branch]}
+  staff_id:        {dtype: id,       syn: [ma nv, ma nhan vien, staff id, staff, employee, cashier, employee id, seller]}
+  staff_name:      {dtype: string,   syn: [nhan vien, ten nhan vien, ten nv, thu ngan, nguoi ban, nv ban hang, staff, staff name, employee name, cashier name]}
+  table_no:        {dtype: string,   syn: [ban, so ban, khu vuc]}
+  # ---- purchasing
+  purchase_id:     {dtype: id,       syn: [ma phieu nhap, so pn, ma nhap, so phieu nhap, ma pn]}
+  purchase_date:   {dtype: date,     syn: [ngay nhap, ngay mua, ngay nhap hang, ngay, import date, purchase date, received date, ngay nhan hang]}
+  lot_id:          {dtype: id,       syn: [lo, so lo, ma lo, batch, lo hang, lot no, lot, batch no, lot number]}
+  purchase_qty:    {dtype: number,   syn: [sl nhap, so luong nhap, sl, so luong, qty, import qty, purchase qty, received qty, qty in]}
+  unit_cost:       {dtype: number,   syn: [gia nhap, don gia nhap, gia von, gia mua, cost, don gia, unit cost, import price, purchase price, cost per unit]}
+  purchase_amount: {dtype: number,   syn: [thanh tien nhap, tien nhap, thanh tien, tong tien nhap, import amount, purchase amount, cost amount]}
+  expiry_date:     {dtype: date,     syn: [hsd, han su dung, han dung, ngay het han, exp, han, expiry, expiry date, expiration, exp date, best before]}
+  supplier_id:     {dtype: id,       syn: [ma ncc, ncc, nha cung cap, ma nha cung cap, supplier, supplier id, vendor, vendor id]}
+  supplier_name:   {dtype: string,   syn: [ten ncc, nha cung cap, ncc, ten nha cung cap, supplier name, vendor name]}
+  # ---- inventory
+  snapshot_date:   {dtype: date,     syn: [ngay kiem, ngay ton, ngay chot, ngay kiem kho, ngay, stock date, count date, as of]}
+  qty_on_hand:     {dtype: number,   syn: [ton, ton kho, so luong ton, con lai, stock, sl ton, ton cuoi, on hand, qty on hand, in stock, stock qty, so luong con]}
+  reorder_level:   {dtype: number,   syn: [ton toi thieu, muc dat hang, dinh muc ton]}
+  # ---- receivables
+  ledger_date:     {dtype: date,     syn: [ngay, ngay ghi no, ngay thu, ngay giao dich, ngay phat sinh, entry date, transaction date]}
+  ledger_type:     {dtype: string,   syn: [loai, loai giao dich, ghi no thu no, phat sinh, loai phat sinh, noi dung, entry type, transaction type, type]}
+  ledger_amount:   {dtype: number,   syn: [so tien, tien, gia tri, amount, value]}
+  debit_amount:    {dtype: number,   syn: [ghi no, phat sinh no, no tang, tien no]}
+  credit_amount:   {dtype: number,   syn: [thu no, tra no, da tra, tien tra, thanh toan no]}
+  due_date:        {dtype: date,     syn: [han tra, han thanh toan, ngay den han]}
+  # ---- services
+  ticket_id:       {dtype: id,       syn: [ma phieu, so phieu, ma lich, ma kham, ma phieu sua, ma dich vu]}
+  service_name:    {dtype: string,   syn: [dich vu, hang muc, cong viec, ten dv, ten dich vu, goi dich vu, service, service name, treatment]}
+  technician_id:   {dtype: string,   syn: [tho, ky thuat vien, bac si, nguoi lam, ktv]}
+  labor_fee:       {dtype: number,   syn: [tien cong, phi dich vu, cong]}
+  parts_amount:    {dtype: number,   syn: [tien phu tung, vat tu, linh kien]}
+  vehicle_plate:   {dtype: string,   syn: [bien so, bien kiem soat]}
+  appointment_status: {dtype: string, syn: [trang thai lich, den, huy hen, vang]}
+
+  # ---- units / conversions / misc (real data)
+  quantity_base:   {dtype: number,   syn: [quy ra dv le, sl quy doi, so luong quy doi, slquydoi, sl co ban]}
+  base_unit:       {dtype: string,   syn: [don vi co ban, dvt co ban, don vi nho nhat]}
+  big_unit:        {dtype: string,   syn: [don vi quy doi, don vi lon]}
+  conv_factor:     {dtype: number,   syn: [ti le quy doi, ty le quy doi, he so, he so quy doi, quy doi]}
+  purchase_unit:   {dtype: string,   syn: [don vi nhap]}
+  purchase_total:  {dtype: number,   syn: [tong tien phieu, tong tien phieu nhap, can tra ncc, tong gia tri nhap]}
+  purchase_status: {dtype: string,   syn: [trang thai phieu, trang thai phieu nhap]}
+  payment_date:    {dtype: date,     syn: [thoi diem thu, ngay thu, ngay tra, thoi gian thu]}
+  payment_id:      {dtype: id,       syn: [ma phieu thu, so phieu thu]}
+  note:            {dtype: string,   syn: [ghi chu, note, chu thich]}
+  line_no:         {dtype: number,   syn: [stt, so thu tu, dong]}
+  product_alias:   {dtype: string,   syn: [ghi tat, viet tat, ten viet tat, ten tat, cach ghi tat, ten goi tat, ten goi khac, ten khac, alias]}
+  brand:           {dtype: string,   syn: ["@hãng", thuong hieu, nha san xuat, hang san xuat, hang sx, brand, manufacturer]}
+  address:         {dtype: string,   syn: [dia chi, address]}
+  active_ingredient: {dtype: string, syn: [hoat chat]}
+  is_prescription: {dtype: bool,     syn: [thuoc ke don, ke don, ban theo don]}
+  shift_id:        {dtype: id,       syn: [ma ca, ca lam, ma ca lam]}
+  price_effective_date: {dtype: date, syn: [ngay ap dung, ngay bat dau ap dung]}
+  delivery_date:   {dtype: date,     syn: [ngay giao]}
+  delivery_batch:  {dtype: number,   syn: [dot giao, dot]}
+  registration_date: {dtype: date,   syn: [ngay dang ky]}
+  ignore:          {dtype: string,   syn: []}
+
+pack_entities:
+  sales_lines: [quantity_base, note, line_no, shift_id, order_id, order_date, order_datetime, order_time, product_id, product_name, category, variant, quantity,
+                unit, unit_price, cost_price, line_gross_amount, line_discount_amount, line_discount_pct, line_net_amount,
+                line_status, returned_qty, returned_flag, order_status, customer_id, customer_name, customer_type,
+                branch_id, branch_name, staff_id, staff_name, channel, payment_method, table_no, voucher_amount,
+                shipping_fee, vat_amount, order_total, paid_amount, debt_amount, service_name, technician_id,
+                vehicle_plate, labor_fee, parts_amount]
+  orders: [note, shift_id, order_id, order_date, order_datetime, order_time, order_status, customer_id, customer_name, customer_type,
+           branch_id, branch_name, staff_id, staff_name, channel, payment_method, table_no, voucher_amount,
+           shipping_fee, vat_amount, order_total, paid_amount, debt_amount]
+  products: [product_id, product_name, category, unit, base_unit, list_price, cost_price, supplier_id, supplier_name, expiry_date,
+             qty_on_hand, reorder_level, variant, active_ingredient, is_prescription, product_alias, brand]
+  customers: [customer_id, customer_name, customer_type, phone, debt_amount]
+  purchase_lots: [purchase_unit, purchase_total, purchase_status, purchase_id, purchase_date, lot_id, product_id, product_name, purchase_qty, unit_cost,
+                  purchase_amount, expiry_date, supplier_id, supplier_name]
+  inventory: [snapshot_date, product_id, product_name, qty_on_hand, reorder_level, expiry_date, lot_id]
+  receivables: [customer_id, customer_name, ledger_date, ledger_type, ledger_amount, debit_amount, credit_amount, due_date]
+  staff: [staff_id, staff_name]
+  branches: [branch_id, branch_name]
+  suppliers: [supplier_id, supplier_name, phone]
+  unit_conversions: [product_id, product_name, big_unit, conv_factor, base_unit]
+  payments: [order_id, payment_id, payment_date, ledger_amount, payment_method, customer_id]
+
+table_hints:   # folded table/sheet/file name tokens
+  sales_lines: [order items, order lines, sale items, chi tiet, ct, dong, ban hang, ban, sales, line, hoa don chi tiet, order items, items, giao dich, doanh thu, don hang chi tiet]
+  orders: [don hang, hoa don, orders, order, don, bill, phieu ban, invoices, sales]
+  products: [product, item, san pham, hang hoa, mat hang, menu, thuc don, danh muc, thuoc, vat tu, products, items, dm, ghi tat]
+  customers: [customer, clients, khach hang, khach, customers, kh, thanh vien]
+  purchase_lots: [nhap, nhap hang, mua hang, purchase, purchases, lo, lots, phieu nhap, nhap kho, import, imports, purchase lots]
+  inventory: [ton kho, ton, kiem kho, inventory, stock, kho]
+  receivables: [cong no, so no, "no", ghi no, receivable, receivables, debt, debts, ledger]
+  staff: [nhan vien, staff, tho, danh sach tho, danh sach nhan vien]
+  unit_conversions: [quy doi, danh sach quy doi, don vi sp, conversion]
+  payments: [thanh toan, phieu thu, payments]
+  branches: [chi nhanh, cua hang, branch]
+  suppliers: [nha cung cap, ncc, supplier]
+
+# README data-dictionary phrases -> role (descriptions start with these; folded; longest wins)
+readme_desc:
+  order_id: [ma don, so hoa don, ma hoa don, so hd, ma phieu ban, so thu tu don, so thu tu hoa don, mot don, 1 don, mot hoa don, mot phieu ban]
+  order_date: [ngay ban, ngay dat, ngay cua hoa don, ngay sua, ngay lam]
+  order_datetime: [thoi diem dat don, thoi diem tao don]
+  order_time: [gio dat don, gio tao don]
+  order_status: [trang thai don, ghi chu cua don don huy, ghi chu cua don; don huy]
+  customer_name: [ten khach, ten khach thanh vien]
+  customer_id: [ma khach]
+  customer_type: [nhom khach]
+  phone: [so dien thoai]
+  address: [dia chi]
+  product_name: [ten hang, ten thuoc]
+  product_id: [ma hang, ma san pham, ma thuoc]
+  category: [nhom hang, loai hang]
+  quantity_base: [so luong da doi ra don vi co ban, so luong quy ve don vi co ban]
+  quantity: [so luong ghi theo don vi cua dong, so luong]
+  unit: [don vi tinh]
+  base_unit: [don vi co ban]
+  big_unit: [don vi lon, don vi quy doi]
+  conv_factor: ["he so: so don vi co ban trong 1 don vi lon", he so]
+  unit_price: [don gia, gia ban mot don vi]
+  list_price: [gia ban hien tai, gia niem yet]
+  line_net_amount: [thanh tien sau giam, thanh tien cua dong, tong tien ca phieu, tien cua phieu, tien hang cua don, cong thanh tien cac mat hang]
+  line_discount_amount: [tien giam cua ca dong, giam gia cua dong]
+  line_gross_amount: [thanh tien truoc giam]
+  cost_price: [gia von mot don vi ban, gia von]
+  returned_qty: [so luong khach tra lai]
+  voucher_amount: [giam gia cua ca don, giam gia don]
+  shipping_fee: [phi giao hang cua ca don, phi giao]
+  order_total: [tong tien don, khach can tra cho ca don, so khach phai tra cho ca don, khach phai tra]
+  paid_amount: [da thanh toan, khach da tra, so tien khach tra]
+  debt_amount: [so khach con no cua don, con no]
+  due_date: [han thanh toan]
+  channel: [kenh ban]
+  payment_method: [hinh thuc thanh toan]
+  staff_id: [ma nhan vien ban, ma nhan vien]
+  staff_name: [ten nhan vien, nhan vien ban, tho lam phieu, ho ten tho, tho lam]
+  purchase_id: [ma phieu nhap, so phieu nhap]
+  purchase_date: [ngay nhap, ngay phieu nhap]
+  lot_id: [so lo, ma lo]
+  purchase_qty: [so luong nhap]
+  unit_cost: [gia nhap mot don vi]
+  purchase_amount: [tien nhap cua ca dong]
+  purchase_total: [tong tien phieu nhap, tong tien cua ca phieu nhap]
+  purchase_status: [trang thai phieu nhap]
+  purchase_unit: [don vi nhap]
+  supplier_id: [ma nha cung cap]
+  supplier_name: [ten nha cung cap, nha cung cap]
+  qty_on_hand: [ton kho, ton cuoi, ton thuc]
+  expiry_date: [han su dung, han dung]
+  active_ingredient: [hoat chat]
+  is_prescription: [thuoc ke don]
+  payment_date: [thoi diem thu]
+  payment_id: [ma phieu thu]
+  ledger_amount: [so tien tra lan do, so tien]
+  note: [ghi chu]
+  line_no: [so thu tu dong]
+  table_no: [ban]
+  vehicle_plate: [bien so xe, dong xe va bien so]
+  service_name: [cac viec da lam, viec da lam, dich vu]
+  delivery_date: [ngay giao]
+  delivery_batch: [dot giao]
+  price_effective_date: [ngay bat dau ap dung gia, ngay ap dung]
+  registration_date: [ngay dang ky]
+  ignore: [cot trong, khong co du lieu]
+
+# Lines of an order that are not goods (folded product-name regex). Not rankable, no quantity;
+# whether they count in revenue is decided by RuleSpec.revenue (service fee: yes by default).
+non_item_lines:
+  service_fee: "^phi phuc vu"
+  order_discount: "^(voucher|dung \\d+ diem|giam gia (don|hoa don)|khuyen mai (don|hoa don)|ma giam gia)"
+  shipping: "^(phi ship|phi giao hang|phi van chuyen|tien ship)"
+
+# Order status vocabulary (folded regex, checked in this order) -> the 4 rulebook statuses (+ other).
+status_vocabulary:
+  canceled: "\\b(khong giao duoc|giao that bai|huy|da huy|bi huy|huy don|cancel|canceled|cancelled|boom|bom hang|that bai|failed|void|khach huy)\\b"
+  returned: "\\b(tra hang|tra lai|tra ve|hang tra ve|bi tra|hoan hang|hoan tra|doi tra|return|returned|refund|hoan tien|khach tra|mang tra|tra may|tra do)\\b"
+  pending: "\\b(dang giao|dang van chuyen|dang ship|cho giao|cho xac nhan|cho lay|chua giao|dang xu ly|pending|processing|shipping|delivering|dang)\\b"
+  completed: "\\b(hoan thanh|da hoan thanh|thanh cong|da giao|giao thanh cong|giao xong|da lay|da nhan|xong|completed|complete|done|success|ok|paid|delivered|da thanh toan|hoan tat|binh thuong)\\b"
+# order status written in a free-text note (books without a status column, rulebook §8): stricter than
+# status_vocabulary so that "kiểm tra lại", "khách chờ lấy" stay completed
+status_note_vocabulary:
+  canceled: "(^|[^a-z])(huy|da huy|bi huy|huy don|khach huy|khong lay|bom hang|boom)([^a-z]|$)"
+  returned: "(^|[^a-z])(tra lai hang|khach tra lai|khach mang tra|mang tra lai|tra hang|hang tra ve|hoan hang|hoan tra|doi tra)([^a-z]|$)"
+  pending: "(^|[^a-z])(dang giao|chua giao|dang ship|dang van chuyen|cho giao)([^a-z]|$)"

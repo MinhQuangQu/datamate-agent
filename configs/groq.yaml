@@ -1,0 +1,33 @@
+# Hosted OpenAI-compatible API (Groq) for experiments. NOT a submission config: the model must be <= 15B and offline
+# for the final image. Key: export GROQ_API_KEY=... (never committed; .env is gitignored).
+# The limits below fit the free/on_demand tier seen on 2026-10-29 (qwen/qwen3.8-27b: ~7k input tokens/min,
+# 1000 requests/day); raise them on a paid tier (also max_concurrency, extra samples, judge).
+version: 1
+run:
+  data_root: data/raw/train
+  result_dir: runs/groq
+  work_dir: /tmp/dma_groq
+  profile: accuracy
+  max_concurrency: 2
+  question_timeout_s: 3600
+  max_concurrent_builds: 2
+  ingest_workers: 2
+llm:
+  start_servers: false
+  endpoints: ["https://api.groq.com/openai/v1"]
+  served_name: qwen/qwen3.8-27b
+  api_key_env: GROQ_API_KEY
+  thinking_style: none          # no chat_template_kwargs on Groq; the model answers without a reasoning trace
+  structured_output: none      # Groq json_schema mode mangles nested keys ("measure_", "filters_"): parse JSON from text
+  drop_params: [top_k]
+  rate_limit: {input_tokens_per_min: 6500, requests_per_min: 25}
+  max_rate_wait_s: 120
+  request_timeout_s: 180
+  max_inflight_per_replica: 2
+rules:
+  prompt_rulebook: relevant     # per-question rulebook rows instead of the whole rulebook (token budget)
+semantic:
+  bsm_samples: 1
+solvers:
+  code: {sandbox_pool: 2, max_steps: 3}
+  arbitration: {extra_code_samples: 0, extra_plan_samples: 0, judge: false, verify: false}

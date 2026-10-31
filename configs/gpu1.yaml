@@ -1,0 +1,21 @@
+# Single 24 GB GPU (RTX 3090 dev box): one vLLM replica on :8001 started by
+#   VLLM_USE_FLASHINFER_SAMPLER=0 NGPU=1 MAX_SEQS=64 DTYPE="--quantization fp8" MODEL=~/models/main bash scripts/serve_llm.sh
+# then `CONFIG=configs/gpu1.yaml bash scripts/run_gpu.sh <mode>`.
+# Business rules come from the split's RuleSpec, never from here.
+version: 1
+run:
+  profile: accuracy
+  max_concurrency: 32          # questions in flight; vLLM started with MAX_SEQS=64
+  max_concurrent_builds: 4
+  ingest_workers: 0            # 0 -> min(16, cpu-2)
+  question_timeout_s: 2400
+llm:
+  start_servers: false
+  endpoints: ["http://127.0.0.1:8001/v1"]
+  served_name: main
+  request_timeout_s: 1200       # thinking stages (bsm 8192 tok) decode slowly on one shared 3090
+  max_inflight_per_replica: 64
+  thinking_style: qwen
+  structured_output: response_format
+solvers:
+  code: {sandbox_pool: 8}

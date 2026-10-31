@@ -1,0 +1,97 @@
+# DataMate Agent — final run configuration (see 03-requirements-spec.md §6, 05.8 §5).
+# Every business parameter comes from the split's RuleSpec, not from here.
+version: 1
+
+run:
+  data_root: /data
+  result_dir: /result
+  work_dir: /tmp/dma
+  profile: accuracy            # accuracy | fast  (decided by ablation, 08 §6)
+  soft_deadline_s: 18000       # 5h00 -> degrade to minimal profile
+  hard_deadline_s: 20400       # 5h40 -> stop, abstain the rest, exit 0
+  max_concurrency: 48          # questions in flight
+  max_concurrent_builds: 4     # business knowledge packs built at the same time
+  resume: false
+
+llm:
+  model_path: /opt/models/main
+  served_name: main
+  replicas:
+    - {gpu: 0, port: 8001}
+    - {gpu: 1, port: 8002}
+  serve_args:                  # a LIST: passed to subprocess as-is (no shell/shlex re-quoting of the JSON)
+    - --dtype
+    - bfloat16
+    - --max-model-len
+    - "32768"
+    - --gpu-memory-utilization
+    - "0.90"
+    - --max-num-seqs
+    - "64"
+    - --enable-prefix-caching
+    - --seed
+    - "0"
+    - --generation-config
+    - vllm
+    - --reasoning-parser
+    - qwen3
+    - --limit-mm-per-prompt
+    - '{"image": 0, "video": 0}'
+  env:
+    VLLM_BATCH_INVARIANT: "0"  # set "1" only if it passes the reproducibility test (13 §6)
+  startup_timeout_s: 900
+  request_timeout_s: 180
+  max_retries: 2
+  seed_base: 20261116
+  sampling:
+    thinking: {temperature: 0.6, top_p: 0.95, top_k: 20}
+    non_thinking: {temperature: 0.0}
+  max_tokens: {rule: 6144, bsm: 8192, plan: 3072, plan_repair: 1024, code_first: 2048, code_step: 768, verify_first: 2048, verify_step: 768, judge: 1536}
+  thinking: {rule: true, bsm: true, plan: true, plan_repair: false, code_first: true, code_step: false, verify_first: true, verify_step: false, judge: true}
+
+semantic:
+  bsm_samples: 3
+  min_fk_coverage: 0.95
+  arithmetic_tolerance_vnd: 1
+  max_card_tokens: 3000
+
+rules:
+  reference_rulebook: assets/train_rulebook.md
+  reference_rulespec: assets/train_rulespec.json
+  extraction_samples: 5
+  min_vote_share: 0.8
+
+nlu:
+  link_threshold: 0.90
+  possible_threshold: 0.60
+  min_margin: 0.05
+
+memory:
+  path: assets/exemplars.jsonl
+  top_k: 3
+  max_per_template: 1
+
+solvers:
+  plan: {enabled: true, repairs: 1, sql_timeout_s: 10}
+  code: {enabled: true, max_steps: 6, cell_timeout_s: 20, max_tokens_per_question: 9000, sandbox_pool: 24}
+  arbitration:
+    extra_code_samples: 2
+    extra_plan_samples: 1
+    vote_margin: 0.8
+    judge: true
+    verify: true                 # tool-using verifier agent on disagreement; judge is its fallback
+
+format:
+  rounding: python             # python | half_up | half_even  -> pin after the rounding probe (07 §2.4)
+  weekday_names: assets/weekday_names.json
+  max_list_len: 100
+  max_table_rows: 200
+
+decision:
+  calibrator: assets/calibrator.json
+  # thresholds live inside calibrator.json (threshold, threshold_unanswerable)
+
+logging:
+  per_question: true
+  max_observation_chars: 4000
+  save_bkp: true

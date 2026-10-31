@@ -1,0 +1,17 @@
+# Dev config: use already-running vLLM servers (scripts/serve_llm.sh) or --fake-llm; small pools for a laptop.
+version: 1
+run:
+  data_root: data/raw/train
+  result_dir: runs/dev
+  work_dir: /tmp/dma_dev
+  profile: accuracy
+  max_concurrency: 8
+  max_concurrent_builds: 2
+  ingest_workers: 2
+llm:
+  start_servers: false
+  endpoints: ["http://127.0.0.1:8001/v1", "http://127.0.0.1:8002/v1"]
+  served_name: main
+  request_timeout_s: 300
+solvers:
+  code: {sandbox_pool: 4}

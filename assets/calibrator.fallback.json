@@ -1,0 +1,32 @@
+{
+ "features": [
+  "agree_ab",
+  "vote_share",
+  "n_candidates",
+  "plan_ok",
+  "code_steps",
+  "exec_errors",
+  "entity_score",
+  "entity_margin",
+  "time_deterministic",
+  "empty_or_zero",
+  "tie_flag",
+  "answer_type_prior",
+  "intent_prior",
+  "unanswerable_pred",
+  "self_conf",
+  "mean_logprob",
+  "bsm_quality",
+  "rule_uncertain",
+  "judge_used",
+  "type_conflict",
+  "heavy_flags",
+  "light_flags"
+ ],
+ "mean": [],
+ "scale": [],
+ "coef": [],
+ "intercept": 0.0,
+ "threshold": 0.5,
+ "threshold_unanswerable": 0.6
+}

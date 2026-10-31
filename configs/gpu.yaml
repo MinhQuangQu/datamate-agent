@@ -1,0 +1,18 @@
+# Local vLLM replicas on this machine (scripts/serve_llm.sh; endpoints passed by scripts/run_gpu.sh).
+# Business rules come from the split's RuleSpec, never from here.
+version: 1
+run:
+  profile: accuracy
+  max_concurrency: 32          # questions in flight (lower to 16 on 1 GPU if latency explodes)
+  max_concurrent_builds: 4
+  ingest_workers: 0            # 0 -> min(16, cpu-2)
+  question_timeout_s: 900
+llm:
+  start_servers: false
+  endpoints: ["http://127.0.0.1:8001/v1", "http://127.0.0.1:8002/v1"]
+  served_name: main
+  request_timeout_s: 300
+  thinking_style: qwen         # Qwen3 / Qwen3.5: chat_template_kwargs.enable_thinking; `none` for other models
+  structured_output: response_format   # guided_json for older vLLM; none if grammar + reasoning parser conflict
+solvers:
+  code: {sandbox_pool: 12}

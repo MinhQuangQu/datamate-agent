@@ -1,0 +1,30 @@
+[project]
+name = "dma"
+version = "0.1.0"
+description = "DataMate Agent — starter kit (deterministic, tested building blocks)"
+requires-python = ">=3.11"
+dependencies = [
+  "duckdb>=1.1",
+  "pandas>=2.2",
+  "numpy>=1.26",
+  "pydantic>=2.7",
+  "rapidfuzz>=3.9",
+  "python-calamine>=0.2",
+  "openpyxl>=3.1",
+  "scikit-learn>=1.5",
+  "pyyaml>=6",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "safetensors>=0.4"]
+
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src", "."]
+testpaths = ["tests"]
