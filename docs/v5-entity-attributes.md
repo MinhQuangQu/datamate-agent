@@ -1,7 +1,9 @@
 # v5 — Thuộc tính entity, nhóm hàng từ bảng phụ (2026-10-31)
 
-**Kết quả:** train sub300 *chưa đo* · public *đang chạy / chưa nộp*. Khi chạy xong, file nộp sẽ là
-`runs/v5/public/submission.jsonl` (cả 1000 câu chạy bằng code v5, không ghép với kết quả cũ).
+**Kết quả:** train sub300 *chưa đo* · public *chưa nộp*.
+File nộp: `submissions/public_v5_2026-10-31.jsonl`. Cả 1000 câu đều chạy bằng code v5, không ghép với kết quả cũ, và
+mất 3 giờ 23 phút khi chạy một mình trên 1× 3090. File gồm 905 câu trả lời, 13 unanswerable và 82 abstain (v4 có 209
+abstain).
 
 ## Bối cảnh
 
@@ -53,6 +55,23 @@ Thêm: "nhóm khách", "kiểu khách", "phân loại khách", "đối tượng 
   - biz_106: trà sữa = 56.845.000, bánh = 3.14 (khớp).
 - Public: dev_003 nay có nhóm hàng và loại khách thật. dev_002, dev_004, dev_009 vẫn không có nguồn category
   trong dữ liệu.
+
+## So sánh nguồn quyết định trên public (v4 → v5)
+
+| Nguồn | v4 trả lời / abstain | v5 trả lời / abstain |
+|---|---|---|
+| agree_ab | 524 / 0 | 559 / 2 |
+| verify | 175 / 54 | 253 / 39 |
+| vote | 52 / 17 | 78 / 17 |
+| judge | 9 / 22 | 20 / 11 |
+| single | 30 / 59 | 8 / 3 |
+| none (không ứng viên nào) | 0 / 50 | 0 / 10 |
+| timeout (không có quyết định) | 6 | 0 |
+
+Phần lớn abstain giảm đi (none + single: từ 109 còn 13) vì public v4 chạy chung GPU với sub300. Khi đó solver bị
+timeout hoặc lỗi nên không có hai ứng viên để so. v5 chạy một mình nên hầu hết câu đi đủ đường agree_ab / verify.
+agree_ab tăng 35 câu, phù hợp với việc category và loại khách giờ đã có dữ liệu. So với v4: 741 câu giống hệt,
+156 câu v4 abstain nay có trả lời, 29 câu ngược lại, và 74 câu cả hai bản đều trả lời nhưng ra kết quả khác nhau.
 
 ## Còn lại / gợi ý cho v6
 

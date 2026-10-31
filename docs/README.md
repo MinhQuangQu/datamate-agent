@@ -10,7 +10,7 @@ Bộ đo train là `train_s300`: 10 câu × 30 shop train, có đáp án, chọn
 | [v2](v2-train-fixes.md) | 2026-10-30 | 0.750 (242/17/41) | 0.17 | Sửa các lỗi thấy trên train, calibrator học từ trace |
 | [v3](v3-deterministic-layer.md) | 2026-10-31 | 0.807 (256/14/30) | **0.425** | Sửa tầng dữ liệu tất định để đọc được kiểu file mới; kiểm bằng pandas độc lập |
 | [v4](v4-verifier-agent.md) | 2026-10-31 | 0.870 (269/8/23) | **0.433** | Verifier agent: khi bất đồng thì chạy code kiểm đúng điểm lệch |
-| [v5](v5-entity-attributes.md) | 2026-10-31 | chưa đo | chưa nộp | Lọc theo thuộc tính entity, nhóm hàng từ bảng phụ, bỏ cột hằng |
+| [v5](v5-entity-attributes.md) | 2026-10-31 | chưa đo | chưa nộp (905 trả lời / 82 abstain) | Lọc theo thuộc tính entity, nhóm hàng từ bảng phụ, bỏ cột hằng |
 
 ## Mạch xuyên suốt
 

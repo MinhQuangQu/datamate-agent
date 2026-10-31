@@ -221,7 +221,7 @@ cùng sai** dù vẫn được gắn agree_ab.
 | `scripts/` | serve, run, sample, validate, merge, build_one, probe, calibrator, CV |
 | `synth/` | sinh split tổng hợp + oracle pandas độc lập |
 | `tests/` | unit, integration, e2e (FakeBackend) |
-| `submissions/` | các file đã nộp lên portal (v1–v4), làm mốc so sánh |
+| `submissions/` | các file nộp lên portal (v1–v5), làm mốc so sánh |
 | `docs/` | lịch sử kiến trúc từng phiên bản |
 | `Dockerfile`, `predict.sh`, `SOLUTION_README.md` | đóng gói image nộp cuối (2× 5090, offline) |
 
